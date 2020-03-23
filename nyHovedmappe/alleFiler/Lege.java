@@ -13,8 +13,12 @@ class Lege implements Comparable<Lege> {
   }
 
   public String toString(){  //Metode for enklere utskrift av objektet
-    return "Navn: " + navn;
+    String lege = String.format("%-30s", "Navn: "+navn);
+    return lege;
   }
+
+
+
 
   public int compareTo(Lege lege){  //Metode for å kunne sammenligne legers navn for alfabetisk sortering.
     return navn.compareTo(lege.hentNavn());

@@ -30,9 +30,8 @@ class Pasient {
     public String hentFnr(){  //Metode for å hente fødselsnummer.
         return fodselsnummer;
     }
-
     public String toString(){  //Metode for penere utskrift
-        return "Navn: " + navn + "   Fodselsnummer: " + fodselsnummer;
+      String pasient = String.format("%-50s" + "%-20s", "Navn: "+navn, "Fodselsnummer:   " + fodselsnummer);
+        return pasient;
     }
-
 }

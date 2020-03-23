@@ -8,8 +8,9 @@ class Vanedannende extends Legemiddel {
   public int hentVanedannendeStyrke(){  //Henter styrken på legemiddelet
     return styrke;
   }
-  public String toString(){  //Metode for å gi lesbar info om legemiddelet.
-    return ("Navn: " + navn + "\tPris: " + pris +
-    "kr\tVirkestoffmengde: " + virkestoff + "mg\tStyrke: " + styrke);
+
+  public String toString(){  //Metode for penere utskrift
+    String vanedannendeMiddel = String.format("%-60s" + "%-20s"+"%-30s"+"%-20s", "Navn: "+navn, "Pris:" + this.hentPrisString() +"kr ", "Virkestoffmengde: "+hentVirkestoffString()+"mg ", "Styrke: "+styrke);
+      return vanedannendeMiddel;
   }
 }

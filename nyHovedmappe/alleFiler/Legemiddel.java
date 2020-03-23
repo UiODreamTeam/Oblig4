@@ -22,8 +22,16 @@ abstract class Legemiddel {
   public double hentPris(){  //Metode som returnerer prisen på legemiddelet.
     return pris;
   }
+  public String hentPrisString(){  //Metode som returnerer prisen som string med 2 desimaler.
+    String stringPris = String.format("%.2f",pris);
+    return stringPris;
+  }
   public double hentVirkestoff(){  //Metode som returnerer virkestoffet i legemiddelet.
     return virkestoff;
+  }
+  public String hentVirkestoffString(){  //Metode som returnerer virkestoffet i legemiddelet.
+    String stringVirkestoff = String.format("%.2f",virkestoff);
+    return stringVirkestoff;
   }
   public void settNyPris(double pris){  //Metode som gir legemiddelet ny pris.
     this.pris = pris;

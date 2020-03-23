@@ -43,10 +43,9 @@ abstract class Resept {
     }
   }
 
-  public String toString(){  //toString for å få enklere output av objektet.
-    return "Legemiddel: " + legemiddel + "\nLege: " + utskrivendeLege +
-     "\nPasient: Navn: " + pasient.navn + "\tFodselsnummer: " + pasient.fodselsnummer +
-     "\nReit: " + reit;
+  public String toString(){  //Metode for penere utskrift
+    String resept = String.format("%-40s" + "%-25s"+"%-40s"+"%-32s"+"%-5s", "Legemiddel: "+legemiddel.hentNavn(), "Lege:" + utskrivendeLege.hentNavn(), "Pasientnavn: "+pasient.hentNavn(), "Fødselsnummer: " + pasient.hentFnr(), "Reit: "+reit);
+      return resept;
   }
 
   abstract public String farge();  //Abstract-metode for å hente reseptens farge..

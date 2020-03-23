@@ -9,7 +9,7 @@ class Spesialist extends Lege implements Godkjenningsfritak {
     return kontrollID;
   }
   public String toString(){
-    String kuk = String.format("%-60s" + "%-20s", navn, kontrollID);
-    return kuk;
+    String spesi = String.format("%-30s" + "%-7s", "Navn: "+navn, "KontrollID: " + kontrollID);
+    return spesi;
   }
 }

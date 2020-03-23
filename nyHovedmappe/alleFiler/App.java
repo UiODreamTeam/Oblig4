@@ -227,20 +227,20 @@ class App{
       Lege aktuellLege = nyttSystem.hentLegeListe().hent(0);
       int listeTeller = 0;
       for(Lege lege : nyttSystem.hentLegeListe()){
-          System.out.println(listeTeller + ": Navn:" + lege.hentNavn());
+          System.out.println(listeTeller + ": Navn: " + lege.hentNavn());
           listeTeller += 1;
       }
       System.out.print(">");
       int valgtLege = intSjekk();
       boolean registrert = false;
-      while(!registrert){
-          if(valgtLege < nyttSystem.hentLegeListe().stoerrelse()){
-              aktuellLege = nyttSystem.hentLegeListe().hent(valgtLege);
-              registrert = true;
-          }else{
-            System.out.println("\nVennligst skriv et tall mellom 0 og " + nyttSystem.hentLegeListe().stoerrelse());
+          while(!registrert){
+              if(valgtLege >= 0 && valgtLege < nyttSystem.hentLegeListe().stoerrelse()){
+                  aktuellLege = nyttSystem.hentLegeListe().hent(valgtLege);
+                  registrert = true;
+              }else{
+                System.out.println("\nVennligst skriv et tall mellom 0 og " + nyttSystem.hentLegeListe().stoerrelse());
+              }
           }
-      }
       return aktuellLege;
   }
 
@@ -249,7 +249,7 @@ class App{
       int listeTeller = 0;
       Legemiddel aktueltLegemiddel = nyttSystem.hentLegemiddelListe().hent(0);
       for(Legemiddel middel : nyttSystem.hentLegemiddelListe()){
-          System.out.println(listeTeller + ": Navn:" + middel.hentNavn());
+          System.out.println(listeTeller + ": Navn: " + middel.hentNavn());
           listeTeller += 1;
       }
       System.out.print(">");
@@ -271,7 +271,7 @@ class App{
       int listeTeller = 0;
       Pasient aktuellPasient = nyttSystem.hentPasientListe().hent(0);
       for(Pasient pasient : nyttSystem.hentPasientListe()){
-          System.out.println(listeTeller + ": Navn:" + pasient.hentNavn());
+          System.out.println(listeTeller + ": Navn: " + pasient.hentNavn());
           listeTeller += 1;
       }
       System.out.print(">");

@@ -60,7 +60,7 @@ class Legesystem{
           }
 
           if (linjeOrd.size()>5){
-              System.out.println("Ugyldig Linje");  //Luker bort ugyldige linjer i seksjonen.
+                //Ignorerer ugyldige linjer i seksjonen.
           }else{
               try{
                   Double pris = Double.parseDouble(linjeOrd.get(2));
@@ -82,9 +82,7 @@ class Legesystem{
                       Legemiddel nyttLegemiddel = new Vanedannende(navn, pris, virkestoff, styrke);
                       legemiddelListe.leggTil(nyttLegemiddel);
                   }
-                  }catch(Exception e){  //Skriver en feilmelding om linja ikke er gyldig.
-                  System.out.println("Fant ugyldig linje, går til neste.");
-                   }
+              }catch(Exception e){}  //Ignorer linja om den ikke er gyldig.
            }
         }
 
@@ -182,30 +180,5 @@ class Legesystem{
             }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
           }
       }
-    }
-}
-
-class Test{
-    public static void main(String[] args) throws FileNotFoundException, UlovligUtskrift{
-        Legesystem les = new Legesystem();
-        les.lesFil("myeInndata.txt");
-        //Test Pasientseksjon
-        for(Pasient p : les.pasientListe){
-            System.out.println(p.fodselsnummer);
-        }
-        //Test Legemiddelseksjon
-        for(Legemiddel l : les.legemiddelListe){
-            System.out.println(l.navn);
-        }
-        //Test Legeseksjonen
-        for(Lege leg : les.legeListe){
-            System.out.println(leg);
-        }
-        //Test Reseptseksjon
-        for(Lege leg : les.legeListe){
-            for(Resept r : leg.hentReseptListe()){
-                System.out.println(r);
-            }
-        }
     }
 }

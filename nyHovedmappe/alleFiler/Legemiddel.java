@@ -36,4 +36,6 @@ abstract class Legemiddel {
   public void settNyPris(double pris){  //Metode som gir legemiddelet ny pris.
     this.pris = pris;
   }
+  abstract public String hentType();  //Metode for å hente type, overskrives i alle legemiddeltypene.
+  abstract public int hentStyrke();  //Metode for å hente styrken, overskrives i alle legemiddeltypene.
 }

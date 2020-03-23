@@ -10,4 +10,8 @@ class BlaaResept extends Resept {
   public String farge(){  //Metode som returnerer reseptens farge
     return "blaa";
   }
+
+  public String hentType(){
+      return farge();
+  }
 }

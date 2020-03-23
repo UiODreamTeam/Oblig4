@@ -13,4 +13,7 @@ class PResept extends HvitResept {
     }
     return pris;
   }
+  public String hentType(){
+      return "p";
+  }
 }

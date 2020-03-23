@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 class App{
   static Legesystem nyttSystem = new Legesystem();  //Oppretter et legesystem for bruk i appen.
@@ -10,15 +12,15 @@ class App{
     while(menyValg!=6){                    //Innvalg 6 er Exit, saa programmet kjorer til 6 blir valgt i hovedmenyen.
       int valg = hovedmeny();              //Metoden hovedmeny ligger under, og tar seg av utskrift til, og input fra, bruker.
       if (valg==1){
-        skrivUtAlt();  //kjor Metode for innvalg 1 Rimelig ferdig, mangler pynt!
+        skrivUtAlt();  //kjor Metode for innvalg 1 FERDIG
       }else if (valg==2){
-        opprett();     //kjor Metode for innvalg 2 Rimelig ferdig, sikkert mulig med litt pynt.
+        opprett();     //kjor Metode for innvalg 2 FERDIG
       }else if (valg==3){
-        brukResept();  //kjor Metode for innvalg 3 Rimelig ferdig, med forbehold.
+        brukResept();  //kjor Metode for innvalg 3 FERDIG
       }else if (valg==4){
-        skrivStatistikk();//kjor Metode for innvalg 4 IKKE FERDIG
+        skrivStatistikk();//kjor Metode for innvalg 4  FERDIG
       }else if (valg==5){
-        skrivTilFil();//kjor metode for innvalg 5 IKKE FERDIG
+        skrivTilFil();//kjor metode for innvalg 5 FERDIG
       }
       menyValg=valg;
     }
@@ -28,13 +30,13 @@ class App{
       nyttSystem.lesFil(filnavn);
   }
 
-  private static void skrivUtAlt(){  //Metode for innvalg 1 Skriver ut alle
+  private static void skrivUtAlt(){  //Metode for innvalg 1. Skriver ut alle registrerte elementer.
        System.out.println("Oversikt over alle elementer.");
        if(nyttSystem.hentLegeListe().stoerrelse() == 0){
            System.out.println("\nIngen registrerte leger.");
        }else{
            System.out.println("\nAlle registrerte leger:");
-           for(Lege l : nyttSystem.hentLegeListe()){
+           for(Lege l : nyttSystem.hentLegeListe()){    //Printer alle registrerte leger
               System.out.println(l);
            }
        }
@@ -226,7 +228,7 @@ class App{
       int listeTeller = 0;
       for(Lege lege : nyttSystem.hentLegeListe()){
           if(lege instanceof Spesialist){
-              System.out.println(listeTeller + ": Navn: " + lege.hentNavn() + "(Spesialist)");
+              System.out.println(listeTeller + ": Navn: " + lege.hentNavn() + " (Spesialist)");
 
           }else{
                 System.out.println(listeTeller + ": Navn: " + lege.hentNavn());
@@ -456,7 +458,51 @@ class App{
 
   // METODE FOR aa SKRIVE TIL FIL:
   private static void skrivTilFil(){;  //Metode for innvalg 5 - DELOPPGAVE E8
+      try {
+          Scanner scanner = new Scanner(System.in);
+          System.out.println("Filnavn:");
+          String filnavn = scanner.nextLine();
+          FileWriter skriver = new FileWriter(filnavn + ".txt");
 
+          skriver.write("# Pasienter (navn, fnr)\n"); //Skriver pasienter til fil
+          for(Pasient pasient : nyttSystem.hentPasientListe()){
+              skriver.write(pasient.hentNavn() + "," + pasient.hentFnr() + "\n");
+          }
+
+          skriver.write("# Legemidler (navn,type,pris,virkestoff,[styrke])\n"); //skriver legemidler til fil
+          for(Legemiddel legemiddel : nyttSystem.hentLegemiddelListe()){
+              if(legemiddel instanceof Vanedannende || legemiddel instanceof Narkotisk){
+                  skriver.write(legemiddel.hentNavn() + "," + legemiddel.hentType() +
+                  "," + legemiddel.hentPris() +"," + legemiddel.hentVirkestoff() +
+                  ","+ legemiddel.hentStyrke() +"\n");
+              } else {
+                  skriver.write(legemiddel.hentNavn() + "," + legemiddel.hentType() +
+                  "," + legemiddel.hentPris() +"," + legemiddel.hentVirkestoff() +"\n");
+              }
+          }
+
+          skriver.write("# Leger (navn,kontrollid / 0 hvis vanlig lege)\n");//skriver leger til fil
+          for(Lege lege : nyttSystem.hentLegeListe()){
+              skriver.write(lege.hentNavn() + "," + lege.hentKontrollId() + "\n");
+          }
+
+          skriver.write("# Resepter (legemiddelNummer,legeNavn,pasientId,type,[reit])\n");//skriver resepter til fil
+          for(Resept resept : nyttSystem.hentReseptListe()){
+              if(resept instanceof PResept){
+                  skriver.write(resept.hentId() + "," + resept.hentLege().hentNavn() +
+                  "," + resept.hentPasient().hentId() + "," + resept.hentType() + "\n");
+              } else {
+                  skriver.write(resept.hentId() + "," + resept.hentLege().hentNavn() +
+                  "," + resept.hentPasient().hentId() + "," + resept.hentType() +
+                  "," + resept.hentReit() + "\n");
+              }
+          }
+          skriver.close();
+          System.out.println("Fil lagret vellykket. Lagret som: " + filnavn + ".txt");
+      } catch (IOException e) {
+          System.out.println("En feil oppstod.");
+          e.printStackTrace();
+      }
   }
 
   static private int hovedmeny() throws InputMismatchException{
@@ -494,7 +540,7 @@ class App{
               valgtPasient = nyttSystem.hentPasientListe().hent(pasientId);
               innenforListeIndex = true;
           }catch(UgyldigListeIndeks e){
-          System.out.println("Oppgitt pasientID er ikke i pasientlista. Vennligst oppgi et tall mellom 0 og "
+          System.out.println("Oppgitt pasientId er ikke i pasientlista. Vennligst oppgi et tall mellom 0 og "
           + listeStoerrelse);
           System.out.print(">");
           pasientId = intSjekk();
@@ -574,7 +620,7 @@ class App{
       System.out.print("\nVennligst skriv navn paa legen du vil opprette.\n>");
       String nyLegeNavn = navnSjekk();  //Sjekker om brukers input er gyldig.
 
-      System.out.print("\nVennligst oppgi legens kontrollID.\n>");
+      System.out.print("\nVennligst oppgi legens kontrollId.\n>");
       int kontrollId = intSjekk();  //Sjekker om brukers input er gyldig.
 
       if(kontrollId != 0){  //Sjekker om spesialist eller vanlig lege skal opprettes.

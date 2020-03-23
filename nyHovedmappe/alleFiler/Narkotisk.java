@@ -9,6 +9,14 @@ class Narkotisk extends Legemiddel {
     return styrke;
   }
 
+  public String hentType(){
+      return "narkotisk";
+  }
+
+  public int hentStyrke(){
+      return hentNarkotiskStyrke();
+  }
+
   public String toString(){  //Metode for penere utskrift
     String narkotiskMiddel = String.format("%-60s" + "%-20s"+"%-30s"+"%-20s", "Navn: "+navn, "Pris:" + this.hentPrisString() +"kr ", "Virkestoffmengde: "+hentVirkestoffString()+"mg ", "Styrke: "+styrke);
       return narkotiskMiddel;

@@ -9,4 +9,7 @@ class HvitResept extends Resept {
   public String farge(){  //Metode som returnerer reseptens farge
     return "hvit";
   }
+  public String hentType(){
+      return farge();
+  }
 }

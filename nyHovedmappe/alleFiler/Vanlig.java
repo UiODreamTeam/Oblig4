@@ -8,4 +8,10 @@ class Vanlig extends Legemiddel {
     String vanligMiddel = String.format("%-60s" + "%-20s"+"%-30s", "Navn: "+navn, "Pris:" + this.hentPrisString() +"kr ", "Virkestoffmengde: "+hentVirkestoffString()+"mg ");
       return vanligMiddel;
   }
+  public int hentStyrke(){
+      return 0;
+  }
+  public String hentType(){
+      return "vanlig";
+  }
 }

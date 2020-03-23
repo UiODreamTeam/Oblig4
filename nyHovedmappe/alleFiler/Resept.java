@@ -51,4 +51,6 @@ abstract class Resept {
   abstract public String farge();  //Abstract-metode for å hente reseptens farge..
 
   abstract public double prisAaBetale();  //Abstract-metode for å hente pris.
+
+  abstract public String hentType();
 }

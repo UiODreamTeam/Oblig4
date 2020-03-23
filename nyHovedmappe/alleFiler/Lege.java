@@ -12,6 +12,10 @@ class Lege implements Comparable<Lege> {
     return navn;
   }
 
+  public int hentKontrollId(){
+      return 0;
+  }
+
   public String toString(){  //Metode for enklere utskrift av objektet
     String lege = String.format("%-30s", "Navn: "+navn);
     return lege;

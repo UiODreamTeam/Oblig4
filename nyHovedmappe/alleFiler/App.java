@@ -238,7 +238,9 @@ class App{
                   aktuellLege = nyttSystem.hentLegeListe().hent(valgtLege);
                   registrert = true;
               }else{
-                System.out.println("\nVennligst skriv et tall mellom 0 og " + nyttSystem.hentLegeListe().stoerrelse());
+                System.out.println("\nVennligst skriv et tall mellom 0 og " + (nyttSystem.hentLegeListe().stoerrelse()-1));
+                System.out.print(">");
+                valgtLege = intSjekk();
               }
           }
       return aktuellLege;
@@ -256,11 +258,13 @@ class App{
       int valgtLegemiddel = intSjekk();
       boolean finsMiddelet = false;
       while (!finsMiddelet){
-              if(valgtLegemiddel < nyttSystem.hentLegemiddelListe().stoerrelse()){
+              if(valgtLegemiddel >= 0 && valgtLegemiddel < nyttSystem.hentLegemiddelListe().stoerrelse()){
                   aktueltLegemiddel = nyttSystem.hentLegemiddelListe().hent(valgtLegemiddel);
                   finsMiddelet = true;
               }else{
                   System.out.println("\nVennligst skriv et tall mellom 0 og " + (nyttSystem.hentLegemiddelListe().stoerrelse() -1));
+                  System.out.print(">");
+                  valgtLegemiddel = intSjekk();
               }
           }
       return aktueltLegemiddel;
@@ -278,11 +282,13 @@ class App{
       int valgtPasient = intSjekk();
       boolean finsPasienten = false;
       while (!finsPasienten){
-              if(valgtPasient < nyttSystem.hentPasientListe().stoerrelse()){
+              if(valgtPasient >= 0 && valgtPasient < nyttSystem.hentPasientListe().stoerrelse()){
                   aktuellPasient = nyttSystem.hentPasientListe().hent(valgtPasient);
                   finsPasienten = true;
               }else{
                   System.out.println("\nVennligst skriv et tall mellom 0 og " + (nyttSystem.hentPasientListe().stoerrelse() -1));
+                  System.out.print(">");
+                  valgtPasient = intSjekk();
               }
           }
       return aktuellPasient;

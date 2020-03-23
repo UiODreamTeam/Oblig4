@@ -600,7 +600,7 @@ class App{
 
   private static String navnSjekk(){  //Metode for aa sjekke brukers input hvor det blir spurt om navn/tekst.
       Scanner nyttNavnScanner = new Scanner(System.in);
-      String navn = nyttNavnScanner.next();
+      String navn = nyttNavnScanner.nextLine();
       boolean sjekk = false;
       while(!sjekk){
           try{

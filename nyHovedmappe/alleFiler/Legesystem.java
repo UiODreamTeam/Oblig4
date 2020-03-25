@@ -161,6 +161,7 @@ class Legesystem{
                   legeListe.hent(l).skrivBlaaResept(legemiddelListe.hent(lm), pasientListe.hent(p), reseptReit);
                   BlaaResept nyBlaaResept = new BlaaResept(legemiddelListe.hent(lm), legeListe.hent(l), pasientListe.hent(p), reseptReit);
                   reseptListe.leggTil(nyBlaaResept);
+                  pasientListe.hent(p).leggTilResept(nyBlaaResept);
               }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
 
             }else if(reseptType.equals("militaer")){    //Sjekker resepttype
@@ -169,6 +170,7 @@ class Legesystem{
                 legeListe.hent(l).skrivMilitaerResept(legemiddelListe.hent(lm), pasientListe.hent(p), reseptReit);
                 MilitaerResept nyMilitaerResept = new MilitaerResept(legemiddelListe.hent(lm), legeListe.hent(l), pasientListe.hent(p), reseptReit);
                 reseptListe.leggTil(nyMilitaerResept);
+                pasientListe.hent(p).leggTilResept(nyMilitaerResept);
             }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
 
           }else if(reseptType.equals("hvit")){  //Sjekker resepttype
@@ -177,6 +179,7 @@ class Legesystem{
                 legeListe.hent(l).skrivHvitResept(legemiddelListe.hent(lm), pasientListe.hent(p), reseptReit);
                 HvitResept nyHvitResept = new HvitResept(legemiddelListe.hent(lm), legeListe.hent(l), pasientListe.hent(p), reseptReit);
                 reseptListe.leggTil(nyHvitResept);
+                pasientListe.hent(p).leggTilResept(nyHvitResept);
             }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
 
           }else if(reseptType.equals("p")){     //Sjekker resepttype
@@ -184,6 +187,7 @@ class Legesystem{
                 legeListe.hent(l).skrivPResept(legemiddelListe.hent(lm), pasientListe.hent(p));
                 PResept nyPResept = new PResept(legemiddelListe.hent(lm), legeListe.hent(l), pasientListe.hent(p));
                 reseptListe.leggTil(nyPResept);
+                pasientListe.hent(p).leggTilResept(nyPResept);
             }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
           }
       }

@@ -8,7 +8,7 @@ class App{
   static Legesystem nyttSystem = new Legesystem();  //Oppretter et legesystem for bruk i appen.
   public static void main(String[] args) throws InputMismatchException, UlovligUtskrift, FileNotFoundException{
     int menyValg = 0;
-    filLesing("inndata.txt");               //Lar fil opprette litt leger og midler for bruk i programmet mens vi tester. !!!!FJERN FoR LEVERING!!!!
+    filLesing("myeInndata.txt");               //Lar fil opprette litt leger og midler for bruk i programmet mens vi tester. !!!!FJERN FoR LEVERING!!!!
     while(menyValg!=6){                    //Innvalg 6 er Exit, saa programmet kjorer til 6 blir valgt i hovedmenyen.
       int valg = hovedmeny();              //Metoden hovedmeny ligger under, og tar seg av utskrift til, og input fra, bruker.
       if (valg==1){
@@ -32,7 +32,7 @@ class App{
        if(nyttSystem.hentLegeListe().stoerrelse() == 0){
            System.out.println("\nIngen registrerte leger.");
        }else{
-           System.out.println("\n\nAlle registrerte leger:");
+           System.out.println("\n\nDet finnes " + nyttSystem.hentLegeListe().stoerrelse() + " registrerte leger. \nAlle registrerte leger:");
            for(Lege l : nyttSystem.hentLegeListe()){    //Printer alle registrerte leger
               System.out.println(l);
            }
@@ -41,7 +41,7 @@ class App{
        if(nyttSystem.hentPasientListe().stoerrelse() == 0){
            System.out.println("\nIngen registrerte pasienter.");
        }else{
-           System.out.println("\n\nAlle registrerte pasienter:");
+           System.out.println("\n\nDet finnes " + nyttSystem.hentPasientListe().stoerrelse() + " registrerte pasienter. \nAlle registrerte pasienter:");
            for(Pasient p : nyttSystem.hentPasientListe()){
                System.out.println(p);
            }
@@ -49,7 +49,7 @@ class App{
        if(nyttSystem.hentLegemiddelListe().stoerrelse() == 0){
            System.out.println("\nIngen registrerte legemidler.");
        }else{
-           System.out.println("\n\nAlle registrerte legemidler:");
+           System.out.println("\n\nDet finnes " + nyttSystem.hentLegemiddelListe().stoerrelse() + " registrerte legemidler. \nAlle registrerte legemidler:");
            for(Legemiddel m : nyttSystem.hentLegemiddelListe()){
                System.out.println(m);
            }
@@ -57,7 +57,7 @@ class App{
        if(nyttSystem.hentReseptListe().stoerrelse() == 0){
            System.out.println("\nIngen registrerte resepter.");
        }else{
-           System.out.println("\n\nAlle registrerte resepter:");
+           System.out.println("\n\nDet finnes " + nyttSystem.hentReseptListe().stoerrelse() + " registrerte resepter. \nAlle registrerte resepter:");
            for(Resept r : nyttSystem.hentReseptListe()){
                System.out.println(r);
            }
@@ -407,16 +407,16 @@ class App{
        Lenkeliste<Lege> legerMedNarkotisk = new SortertLenkeliste<Lege>();
        for (Resept r : nyttSystem.hentReseptListe()){
            if (r.hentLegemiddel() instanceof Narkotisk){
-               if(legerMedNarkotisk.stoerrelse() == 0) {
-                   legerMedNarkotisk.leggTil(r.hentLege());
-               }else{
-                   for(Lege lege : legerMedNarkotisk){
-                       if(!(lege.hentNavn().equals(r.hentLege().hentNavn()))){  //Sjekker om legen allerede har registrert narkotisk legemiddel i sitt navn.
-                           legerMedNarkotisk.leggTil(r.hentLege());
-                       }
-                   }
-               }
-           }
+                Lege lege = r.hentLege();
+                Boolean b = false;
+                for (Lege l : legerMedNarkotisk){
+                    if (l == lege){
+                        b = true;
+                    }
+                } if (b==false){
+                    legerMedNarkotisk.leggTil(lege);
+                }
+            }
        }
        return legerMedNarkotisk;
   }
@@ -425,16 +425,16 @@ class App{
       Lenkeliste<Pasient> pasienterMedNarkotisk = new Lenkeliste<Pasient>();
       for (Resept r : nyttSystem.hentReseptListe()){
           if (r.hentLegemiddel() instanceof Narkotisk){
-              if (pasienterMedNarkotisk.stoerrelse() == 0){
-                  pasienterMedNarkotisk.leggTil(r.hentPasient());
-              }else{
-                  for(Pasient pasient : pasienterMedNarkotisk){
-                      if(!(pasient.hentNavn().equals(r.hentPasient().hentNavn()))){     //Sjekker om pasienten allerede har registrert narkotisk legemiddel i sitt navn.
-                          pasienterMedNarkotisk.leggTil(r.hentPasient());
-                      }
-                  }
-              }
-          }
+               Pasient pasient = r.hentPasient();
+               Boolean b = false;
+               for (Pasient p : pasienterMedNarkotisk){
+                   if (p == pasient){
+                       b = true;
+                   }
+               } if (b == false){
+                   pasienterMedNarkotisk.leggTil(pasient);
+               }
+           }
       }
       return pasienterMedNarkotisk;
   }

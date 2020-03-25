@@ -8,4 +8,5 @@ class Stabel<T> extends Lenkeliste<T>{
     T fjernet = super.fjern(super.stoerrelse()-1);
     return fjernet;
   }
+
 }

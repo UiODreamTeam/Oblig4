@@ -41,7 +41,7 @@ class Lege implements Comparable<Lege> {
 
   public boolean sjekkLovlighet(Legemiddel legemiddel){  //Sjekk for utskrift av narkotisk.
     if(legemiddel instanceof Narkotisk){
-      if(this.sjekkLege() == true){
+      if(this.sjekkLege()){
         return true;   //Kun spesialist får skrive narkotisk
       }else{
         return false;  //Vanlig lege returnerer false.
@@ -52,7 +52,7 @@ class Lege implements Comparable<Lege> {
 
   public HvitResept skrivHvitResept(Legemiddel legemiddel, Pasient pasient, int reit)
   throws UlovligUtskrift {  //Metode for utskrift av hvite resepter.
-    if(sjekkLovlighet(legemiddel) == true){
+    if(sjekkLovlighet(legemiddel)){
       HvitResept nyResept = new HvitResept(legemiddel, this, pasient, reit);
       utskrevedeResepter.leggTil(nyResept);  //Legger den nye resepten i utskrevedeResepter-lista
       return nyResept;  //returnerer den nye resepten.
@@ -63,7 +63,7 @@ class Lege implements Comparable<Lege> {
 
   public MilitaerResept skrivMilitaerResept(Legemiddel legemiddel, Pasient pasient, int reit)
   throws UlovligUtskrift{  //Metode for utskrift av militaer resepter.
-    if(sjekkLovlighet(legemiddel) == true){
+    if(sjekkLovlighet(legemiddel)){
       MilitaerResept nyResept = new MilitaerResept(legemiddel, this, pasient, reit);
       utskrevedeResepter.leggTil(nyResept);  //Legger den nye resepten i utskrevedeResepter-lista.
       return nyResept;      //returnere den nye resepten.
@@ -74,7 +74,7 @@ class Lege implements Comparable<Lege> {
 
   public BlaaResept skrivBlaaResept(Legemiddel legemiddel, Pasient pasient, int reit)
   throws UlovligUtskrift {  //Metode for utskrift av blaa resepter
-    if(sjekkLovlighet(legemiddel) == true){
+    if(sjekkLovlighet(legemiddel)){
       BlaaResept nyResept = new BlaaResept(legemiddel, this, pasient, reit);
       utskrevedeResepter.leggTil(nyResept);   //Legger til den nye resepten i utskrevedeResepter-lista.
       return nyResept;      //Returnerer den nye resepten.
@@ -85,7 +85,7 @@ class Lege implements Comparable<Lege> {
 
   public PResept skrivPResept(Legemiddel legemiddel, Pasient pasient)
   throws UlovligUtskrift {  //Metode for utskrift av P-resepter.
-    if(sjekkLovlighet(legemiddel) == true){
+    if(sjekkLovlighet(legemiddel)){
       PResept nyResept = new PResept(legemiddel, this, pasient);
       utskrevedeResepter.leggTil(nyResept);  //Legger den nye resepten i utskrevedeResepter-lista.
       return nyResept;  //Returnerer den ny resepten.

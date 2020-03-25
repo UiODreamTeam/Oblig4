@@ -111,7 +111,7 @@ class Legesystem{
                 legeListe.leggTil(nySpesialist);  //Oppretter og legger til spesialist i legelisa om kontrollid != 0.
               }
           }catch(Exception e){  //Skriver en feilmelding ved funn av ugyldig linjer.
-              System.out.println("Fant ugyldig linje, går videre.");
+              System.out.println("Fant ugyldig linje, gaar videre.");
            }
           }
        }
@@ -133,7 +133,6 @@ class Legesystem{
                                               //pasientId på plass 2, resepttype på plass 3 og evt styrke
                                               //på plass 4.
          }
-
 
            int legemiddelNummer = Integer.parseInt(linjeOrd.get(0));
            String legeNavn = linjeOrd.get(1);
@@ -160,23 +159,31 @@ class Legesystem{
             int reseptReit = Integer.parseInt(linjeOrd.get(4));
               try{  //Prøver skrive ut, med forbehold om at legen muligens ikke er godkjent.
                   legeListe.hent(l).skrivBlaaResept(legemiddelListe.hent(lm), pasientListe.hent(p), reseptReit);
+                  BlaaResept nyBlaaResept = new BlaaResept(legemiddelListe.hent(lm), legeListe.hent(l), pasientListe.hent(p), reseptReit);
+                  reseptListe.leggTil(nyBlaaResept);
               }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
 
             }else if(reseptType.equals("militaer")){    //Sjekker resepttype
               int reseptReit = Integer.parseInt(linjeOrd.get(4));
             try{    //Prøver skrive ut, med forbehold om at legen muligens ikke er godkjent.
                 legeListe.hent(l).skrivMilitaerResept(legemiddelListe.hent(lm), pasientListe.hent(p), reseptReit);
+                MilitaerResept nyMilitaerResept = new MilitaerResept(legemiddelListe.hent(lm), legeListe.hent(l), pasientListe.hent(p), reseptReit);
+                reseptListe.leggTil(nyMilitaerResept);
             }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
 
           }else if(reseptType.equals("hvit")){  //Sjekker resepttype
             int reseptReit = Integer.parseInt(linjeOrd.get(4));
             try{    //Prøver skrive ut, med forbehold om at legen muligens ikke er godkjent.
                 legeListe.hent(l).skrivHvitResept(legemiddelListe.hent(lm), pasientListe.hent(p), reseptReit);
+                HvitResept nyHvitResept = new HvitResept(legemiddelListe.hent(lm), legeListe.hent(l), pasientListe.hent(p), reseptReit);
+                reseptListe.leggTil(nyHvitResept);
             }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
 
           }else if(reseptType.equals("p")){     //Sjekker resepttype
             try{    //Prøver skrive ut, med forbehold om at legen muligens ikke er godkjent.
                 legeListe.hent(l).skrivPResept(legemiddelListe.hent(lm), pasientListe.hent(p));
+                PResept nyPResept = new PResept(legemiddelListe.hent(lm), legeListe.hent(l), pasientListe.hent(p));
+                reseptListe.leggTil(nyPResept);
             }catch(UlovligUtskrift e){} //Kaster aktuell exception om legen ikke har lov til å skrive ut.
           }
       }

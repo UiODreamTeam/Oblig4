@@ -8,7 +8,7 @@ class App{
   static Legesystem nyttSystem = new Legesystem();  //Oppretter et legesystem for bruk i appen.
   public static void main(String[] args) throws InputMismatchException, UlovligUtskrift, FileNotFoundException{
     int menyValg = 0;
-    filLesing("myeInndata.txt");               //Lar fil opprette litt leger og midler for bruk i programmet mens vi tester. !!!!FJERN FoR LEVERING!!!!
+    filLesing("inndata.txt");               //Lar fil opprette litt leger og midler for bruk i programmet mens vi tester. !!!!FJERN FoR LEVERING!!!!
     while(menyValg!=6){                    //Innvalg 6 er Exit, saa programmet kjorer til 6 blir valgt i hovedmenyen.
       int valg = hovedmeny();              //Metoden hovedmeny ligger under, og tar seg av utskrift til, og input fra, bruker.
       if (valg==1){
@@ -404,13 +404,11 @@ class App{
   }
 
    private static Lenkeliste<Lege> muligNarkotikaMisbrukLeger(){    //Metode for å finne leger med utskrevet narkotisk legemiddel.
-       Lenkeliste<Lege> legerMedNarkotisk = new SortertLenkeliste<>();
-       int teller = 0;
+       Lenkeliste<Lege> legerMedNarkotisk = new SortertLenkeliste<Lege>();
        for (Resept r : nyttSystem.hentReseptListe()){
            if (r.hentLegemiddel() instanceof Narkotisk){
-               if(teller == 0){
+               if(legerMedNarkotisk.stoerrelse() == 0) {
                    legerMedNarkotisk.leggTil(r.hentLege());
-                   teller++;
                }else{
                    for(Lege lege : legerMedNarkotisk){
                        if(!(lege.hentNavn().equals(r.hentLege().hentNavn()))){  //Sjekker om legen allerede har registrert narkotisk legemiddel i sitt navn.
@@ -424,13 +422,11 @@ class App{
   }
 
   private static Lenkeliste<Pasient> muligNarkotikaMisbrukPasienter(){      //Metode for å finne pasienter som har mottat resept på narkotiske legemiddeler.
-      Lenkeliste<Pasient> pasienterMedNarkotisk = new Lenkeliste<>();
-      int teller = 0;
+      Lenkeliste<Pasient> pasienterMedNarkotisk = new Lenkeliste<Pasient>();
       for (Resept r : nyttSystem.hentReseptListe()){
           if (r.hentLegemiddel() instanceof Narkotisk){
-              if (teller == 0){
+              if (pasienterMedNarkotisk.stoerrelse() == 0){
                   pasienterMedNarkotisk.leggTil(r.hentPasient());
-                  teller++;
               }else{
                   for(Pasient pasient : pasienterMedNarkotisk){
                       if(!(pasient.hentNavn().equals(r.hentPasient().hentNavn()))){     //Sjekker om pasienten allerede har registrert narkotisk legemiddel i sitt navn.

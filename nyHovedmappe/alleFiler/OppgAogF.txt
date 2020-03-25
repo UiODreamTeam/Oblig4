@@ -1,0 +1,36 @@
+A1.
+Vi forventer at alle skal bidra til oppgaven, og alle forventer i bli inkludert i arbeidet. Vi delegerer ikke konkrete
+deloppgaver nå ettersom vi vil få bedre oversikt over hva som må gjøres etterhvert. Vi foretar en dynamisk fordeling underveis.
+Ambisjonen er å levere et sterkt produkt som fungerer etter kravene beskrevet i oppgaven og fremstår proffesjonelt. 
+
+A2.
+Av håpenbare grunner (Coronoa-time) vil vi unngå å sitte sammen å jobbe, men opprettholder kontinuerlig kommunikasjon
+gjennom digitale hjelpemidler. Vi vil prøve å bygge opp prosjektet gjennom en felles mappe på github. Pga. midtveis-eksamen i 
+matte har vi blitt enige om å gjennomføre hele prosjektet intensivt etter denne.
+
+A3. 
+For å unngå overdreven tidsbruk på at hver enkelt skulle analysere alle de ulike tidligere obligene, tok vi en runde 
+der hver enkelt forklarte litt om hvordan obligene hadde gått, hvor fornøyd hver enkelt var med sine løsninger,
+og diskuterte ev. pros and cons. Vi endte opp med Jørgen Fradet-Andersen sine løsninger etter denne samtalen. For det første
+var han meget komfortabel med sine løsninger, og han var den eneste som hadde implementert "dobbelt-lenke" i lenkelistene,
+som bare kunne være positivt uten at vi foreløpig har identifisert behov for det. 
+For å sikre kompatibilitet og konsekvent kodeskikk valgte vi å bruke alle løsningene fra samme person. Resterende 
+gruppemedlemmer synes koden var grei å sette seg inn i.
+
+Del F:
+F1: Vi er generelt fornøyd med produktet og utførelsen av prosjektet. Vi valgte å kjøre en del felles økter hvor vi snakket 
+sammen over Facetime og kodet synkront i Atom vha. en pakke kalt Teletype som gjorde at alle kunne redigere samtidig mens 
+dokumentet ble oppdatert kontinuerlig. Midlertidig tekst i kodefilene underveis gjorde det oversiktlig å se hvilke deler av 
+programmet som gjenstod.
+
+F2: Ettersom vi er ganske fornøyde er det ikke så mye vi ville ha gjort annerledes, men det er en god del ting som ville
+ha gått raskere og mer effektivt nå som følge av at vi måtte lære mye underveis. For eksempel var det litt jobb å opprette 
+Teletype og GitHub og sette seg inn i bruken av disse. Viktigheten av et ryddig oppsett og en overordnet plan fra start 
+har også blitt tydelig.
+
+F3: Vi har lært mye om å gjennomføre sammarbeidsprosjekter innen koding. Det kan være utfordrende å sette seg inn i andres
+kode og hele tiden holde seg oppdatert på et prosjekt i endring. God kommunikasjon om hvilke endringer som er gjort, hva som
+gjenstår osv er viktig for suksess. Et stort utbytte av prosjektet har også vært innføring i systemer som GitHub som vil
+komme til å være essensielle gjennom en karriere i informatikk. 
+
+

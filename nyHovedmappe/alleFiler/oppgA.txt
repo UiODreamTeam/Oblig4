@@ -1,0 +1,20 @@
+Del A
+
+A1.
+Vi forventer at alle skal bidra til oppgaven, og alle forventer å bli inkludert i arbeidet. Vi delegerer ikke konkrete
+deloppgaver nå ettersom vi vil få bedre oversikt over hva som må gjøres etterhvert. Vi foretar en dynamisk fordeling underveis.
+Ambisjonen er å levere et sterkt produkt som fungerer etter kravene beskrevet i oppgaven og fremstår proffesjonelt.
+
+A2.
+Av håpenbare grunner (Coronoa-time) vil vi unngå å sitte sammen å jobbe, men opprettholder kontinuerlig kommunikasjon
+gjennom digitale hjelpemidler. Vi vil prøve å bygge opp prosjektet gjennom en felles mappe på github. Pga. midtveis-eksamen i
+matte har vi blitt enige om å gjennomføre hele prosjektet intensivt etter denne.
+
+A3.
+For å unngå overdreven tidsbruk på at hver enkelt skulle analysere alle de ulike tidligere obligene, tok vi en runde
+der hver enkelt forklarte litt om hvordan obligene hadde gått, hvor fornøyd hver enkelt var med sine løsninger,
+og diskuterte ev. pros and cons. Vi endte opp med Jørgen Fradet-Andersen sine løsninger etter denne samtalen. For det første
+var han meget komfortabel med sine løsninger, og han var den eneste som hadde implementert "dobbelt-lenke" i lenkelistene,
+som bare kunne være positivt uten at vi foreløpig har identifisert behov for det.
+For å sikre kompatibilitet og konsekvent kodeskikk valgte vi å bruke alle løsningene fra samme person. Resterende
+gruppemedlemmer synes koden var grei å sette seg inn i.

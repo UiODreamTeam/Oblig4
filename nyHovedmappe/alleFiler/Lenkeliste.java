@@ -150,25 +150,4 @@ class Lenkeliste<T> implements Liste<T> {
     T interessant = itererer.innhold;  //Tar ut innholdet av noden vi var interessert i
     return interessant;
   }
-
-  // public boolean finnesAllerede(T x){
-  //     boolean finnes = false;
-  //     if(stoerrelse() == 0){   //Om lista er tom legges elementet rett i lista.
-  //       finnes = false;
-  //     }else{                  //Hvis ikke finner vi plassen dens.
-  //         Node sjekk = start.neste;
-  //         int teller = 0;
-  //         //boolean lagtTil = false;        //Boolean for å ikke legge til dobbelt
-  //         while(teller < stoerrelse()){
-  //           if(sjekk.innhold.compareTo(x) == 0){   //Sammenligner elementene i lista med det nye
-  //             finnes = true;         //Er det nye mindre legger vi det til her.
-  //             teller = stoerrelse();            //Og ender loopen
-  //           }else{               //Er det nye større går vi til neste plass i lista.
-  //             sjekk = sjekk.neste;
-  //             teller++;
-  //           }
-  //         }
-  //       }
-  //   return finnes;
-  // }
 }
